@@ -1,0 +1,644 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="HelponAdminNew.AP.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Help on</title>
+    <!-- This page plugin CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" />
+      <!-- themify-icons line icon -->
+    <link href="../AdminCss/themify-icons/themify-icons.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="../AdminCss/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- ico font -->
+    <link href="../AdminCss/icofont/css/icofont.css" rel="stylesheet" />
+    <!-- feather Awesome -->
+    <link href="../AdminCss/feather/css/feather.css" rel="stylesheet" />
+    <link href="assets/css/style.min.css" rel="stylesheet" />
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet" />
+    <script src="assets/js/jquery.min.js"></script>
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css" rel="stylesheet" />
+    <style>
+        .loaderbox {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.5);
+        }
+    </style>
+    <script>
+        function Startloader() {
+            $(".loaderbox").css("display", "flex");
+        }
+        function Stoploader() {
+            $(".loaderbox").css("display", "none");
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div id="main-wrapper">
+            <!-- ============================================================== -->
+            <!-- Topbar header - style you can find in pages.scss -->
+            <!-- ============================================================== -->
+            <header class="topbar">
+                <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                    <div class="navbar-header">
+                        <!-- This is for the sidebar toggle which is visible on mobile only -->
+                        <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                            <i class="m-r-10 mdi mdi-menu"></i>
+                        </a>
+                        <!-- ============================================================== -->
+                        <!-- Logo -->
+                        <!-- ============================================================== -->
+                        <div class="navbar-brand">
+                            <a href="Dashboard.aspx" class="logo">
+                                <!-- Logo text -->
+                                <span class="logo-text">
+                                    <!-- dark Logo text -
+                                    <!-- Light Logo text -->
+                                    <img src="../Images/logo.png" style="width: 100px;" class="light-logo" alt="homepage" />
+
+                                </span>
+                            </a><a class="sidebartoggler d-none d-md-block" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-toggle-switch mdi-toggle-switch-off font-20"></i></a>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- End Logo -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Toggle which is visible on mobile only -->
+                        <!-- ============================================================== -->
+                        <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="m-r-10 mdi mdi-dots-horizontal"></i>
+                        </a>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                        <!-- ============================================================== -->
+                        <!-- toggle and nav items -->
+                        <!-- ============================================================== -->
+                        <ul class="navbar-nav mr-auto">
+                            <!-- <li class="nav-item d-none d-md-block">
+                                          <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar">
+                                              <i class="mdi mdi-menu font-24"></i>
+                                          </a>
+                                      </li> -->
+                            <!-- ============================================================== -->
+                            <!-- Search -->
+                            <!-- ============================================================== -->
+
+                        </ul>
+                        <!-- ============================================================== -->
+                        <!-- Right side toggle and nav items -->
+                        <!-- ============================================================== -->
+                        <ul class="navbar-nav">
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="assets/images/2.jpg" alt="user" class="rounded-circle" width="40">
+                                    <span class="m-l-5 font-medium d-none d-sm-inline-block">
+                                        <asp:Label ID="lblName" runat="server" Text=""></asp:Label><i class="mdi mdi-chevron-down"></i></span></a>
+                                <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                                    <span class="with-arrow"><span class="bg-primary"></span></span>
+
+                                    <div class="profile-dis scrollable">
+                                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i>My Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="Manage_ChangePassword.aspx"><i class="ti-settings m-r-5 m-l-5"></i>Account Setting</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="Login.aspx?Logout="><i class="fa fa-power-off m-r-5 m-l-5"></i>Logout</a>
+                                        <div class="dropdown-divider"></div>
+                                    </div>
+
+                                </div>
+                            </li>
+                            <!-- ============================================================== -->
+                            <!-- User profile and search -->
+                            <!-- ============================================================== -->
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- ============================================================== -->
+            <!-- End Topbar header -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Left Sidebar - style you can find in sidebar.scss  -->
+            <!-- ============================================================== -->
+            <aside class="left-sidebar">
+                <!-- Sidebar scroll-->
+                <div class="scroll-sidebar">
+                    <!-- Sidebar navigation-->
+                    <nav class="sidebar-nav">
+                        
+                        <ul id="sidebarnav" class="in">
+                            <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i><span class="hide-menu">
+                                <asp:Label ID="lblName1" runat="server" Text=""></asp:Label></span></li>
+
+                            <input type="hidden" name="ctl00$Repeater1$ctl00$link1" id="Repeater1_link1_0" value="Dashboard.aspx">
+                            <input type="hidden" name="ctl00$Repeater1$ctl00$hdnlevel1" id="Repeater1_hdnlevel1_0" value="1">
+                            <li class="sidebar-item selected">
+                                <a class="sidebar-link active" href="Dashboard.aspx" aria-expanded="false">
+                                    <i class="mdi mdi-av-timer"></i><span class="hide-menu">Dashboard</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                </ul>
+                            </li>
+
+                            <input type="hidden" name="ctl00$Repeater1$ctl01$link1" id="Repeater1_link1_1" value="#">
+                            <input type="hidden" name="ctl00$Repeater1$ctl01$hdnlevel1" id="Repeater1_hdnlevel1_1" value="2">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                    <i class=""></i><span class="hide-menu">Admin Setting</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl00$hdnlevel2" id="Repeater1_Repeater2_1_hdnlevel2_0" value="8">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl00$link2" id="Repeater1_Repeater2_1_link2_0" value="Manage_Slider.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Manage_Slider.aspx" aria-expanded="false">-  <span class="hide-menu">Manage Slider</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl01$hdnlevel2" id="Repeater1_Repeater2_1_hdnlevel2_1" value="38">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl01$link2" id="Repeater1_Repeater2_1_link2_1" value="Manage_Banner.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Manage_Banner.aspx" aria-expanded="false">-  <span class="hide-menu">Banner Ads</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl02$hdnlevel2" id="Repeater1_Repeater2_1_hdnlevel2_2" value="13">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl02$link2" id="Repeater1_Repeater2_1_link2_2" value="Master_Package.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_Package.aspx" aria-expanded="false">-  <span class="hide-menu">Manage Package</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl03$hdnlevel2" id="Repeater1_Repeater2_1_hdnlevel2_3" value="35">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl03$link2" id="Repeater1_Repeater2_1_link2_3" value="Manage_PopularCategory.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Manage_PopularCategory.aspx" aria-expanded="false">-  <span class="hide-menu">Popular Category</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl04$hdnlevel2" id="Repeater1_Repeater2_1_hdnlevel2_4" value="39">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl04$link2" id="Repeater1_Repeater2_1_link2_4" value="Master_PopularCites.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_PopularCites.aspx" aria-expanded="false">-  <span class="hide-menu">Popular Cites</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl05$hdnlevel2" id="Repeater1_Repeater2_1_hdnlevel2_5" value="46">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl05$link2" id="Repeater1_Repeater2_1_link2_5" value="Manage_Default.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Manage_Default.aspx" aria-expanded="false">-  <span class="hide-menu">Manage Default</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="ManageCouponImg.aspx" aria-expanded="false">-  <span class="hide-menu">Manage Coupon</span>  </a>
+                                    </li>
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl06$hdnlevel2" id="Repeater1_Repeater2_1_hdnlevel2_6" value="24">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl01$Repeater2$ctl06$link2" id="Repeater1_Repeater2_1_link2_6" value="#">
+                                    <li class="sidebar-item">
+                                        <a class="has-arrow sidebar-link" href="javascript:void(0)" aria-expanded="false">-  <span class="hide-menu">Manage Category</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+
+                                            <li class="sidebar-item"><a href="Master_Category.aspx?Type=Main" class="sidebar-link"><i class="mdi mdi-octagram"></i><span class="hide-menu">Category</span> </a></li>
+
+                                            <li class="sidebar-item"><a href="Master_SubCategory.aspx?Type=Main" class="sidebar-link"><i class="mdi mdi-octagram"></i><span class="hide-menu">Sub Category</span> </a></li>
+
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <input type="hidden" name="ctl00$Repeater1$ctl02$link1" id="Repeater1_link1_2" value="#">
+                            <input type="hidden" name="ctl00$Repeater1$ctl02$hdnlevel1" id="Repeater1_hdnlevel1_2" value="10">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                    <i class=""></i><span class="hide-menu">Manage Account</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl02$Repeater2$ctl00$hdnlevel2" id="Repeater1_Repeater2_2_hdnlevel2_0" value="11">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl02$Repeater2$ctl00$link2" id="Repeater1_Repeater2_2_link2_0" value="Master_Fund.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_Fund.aspx" aria-expanded="false">-  <span class="hide-menu">Manage wallet</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <input type="hidden" name="ctl00$Repeater1$ctl03$link1" id="Repeater1_link1_3" value="View_Request.aspx">
+                            <input type="hidden" name="ctl00$Repeater1$ctl03$hdnlevel1" id="Repeater1_hdnlevel1_3" value="45">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="View_Request.aspx" aria-expanded="false">
+                                    <i class=""></i><span class="hide-menu">View Service Request</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+                                </ul>
+                            </li>
+
+                            <input type="hidden" name="ctl00$Repeater1$ctl04$link1" id="Repeater1_link1_4" value="#">
+                            <input type="hidden" name="ctl00$Repeater1$ctl04$hdnlevel1" id="Repeater1_hdnlevel1_4" value="14">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                    <i class=""></i><span class="hide-menu">Manage Merchant</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl00$hdnlevel2" id="Repeater1_Repeater2_4_hdnlevel2_0" value="15">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl00$link2" id="Repeater1_Repeater2_4_link2_0" value="Master_Merchant.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_Merchant.aspx" aria-expanded="false">-  <span class="hide-menu">Add Merchant</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl01$hdnlevel2" id="Repeater1_Repeater2_4_hdnlevel2_1" value="16">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl01$link2" id="Repeater1_Repeater2_4_link2_1" value="List_Merchant.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="List_Merchant.aspx" aria-expanded="false">-  <span class="hide-menu">List Merchant</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl02$hdnlevel2" id="Repeater1_Repeater2_4_hdnlevel2_2" value="32">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl02$link2" id="Repeater1_Repeater2_4_link2_2" value="View_MerchantProduct.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="View_MerchantProduct.aspx" aria-expanded="false">-  <span class="hide-menu">Merchant Product</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl03$hdnlevel2" id="Repeater1_Repeater2_4_hdnlevel2_3" value="33">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl03$link2" id="Repeater1_Repeater2_4_link2_3" value="View_MerchantOrder.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="View_MerchantOrder.aspx" aria-expanded="false">-  <span class="hide-menu">Merchant Order</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl04$hdnlevel2" id="Repeater1_Repeater2_4_hdnlevel2_4" value="34">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl04$link2" id="Repeater1_Repeater2_4_link2_4" value="ImportMerchant_Excel.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="ImportMerchant_Excel.aspx" aria-expanded="false">-  <span class="hide-menu">Import By Excel</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl05$hdnlevel2" id="Repeater1_Repeater2_4_hdnlevel2_5" value="42">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl05$link2" id="Repeater1_Repeater2_4_link2_5" value="List_MerchantCoupon.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="List_MerchantCoupon.aspx" aria-expanded="false">-  <span class="hide-menu">List Coupon</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl06$hdnlevel2" id="Repeater1_Repeater2_4_hdnlevel2_6" value="49">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl06$link2" id="Repeater1_Repeater2_4_link2_6" value="Manage_Ads.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Manage_Ads.aspx" aria-expanded="false">-  <span class="hide-menu">Merchant Ads</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl07$hdnlevel2" id="Repeater1_Repeater2_4_hdnlevel2_7" value="43">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl07$link2" id="Repeater1_Repeater2_4_link2_7" value="Manage_PopularMerchant.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Manage_PopularMerchant.aspx" aria-expanded="false">-  <span class="hide-menu">Popular Merchant</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl08$hdnlevel2" id="Repeater1_Repeater2_4_hdnlevel2_8" value="48">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl08$link2" id="Repeater1_Repeater2_4_link2_8" value="List_MerchantKYC.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="List_MerchantKYC.aspx" aria-expanded="false">-  <span class="hide-menu">List KYC</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl09$hdnlevel2" id="Repeater1_Repeater2_4_hdnlevel2_9" value="44">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl04$Repeater2$ctl09$link2" id="Repeater1_Repeater2_4_link2_9" value="List_PopularMerchant.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="List_PopularMerchant.aspx" aria-expanded="false">-  <span class="hide-menu">List Popular Merchant</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <input type="hidden" name="ctl00$Repeater1$ctl05$link1" id="Repeater1_link1_5" value="#">
+                            <input type="hidden" name="ctl00$Repeater1$ctl05$hdnlevel1" id="Repeater1_hdnlevel1_5" value="17">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                    <i class=""></i><span class="hide-menu">Manage Franchise</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl05$Repeater2$ctl00$hdnlevel2" id="Repeater1_Repeater2_5_hdnlevel2_0" value="18">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl05$Repeater2$ctl00$link2" id="Repeater1_Repeater2_5_link2_0" value="Master_Franchise.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_Franchise.aspx" aria-expanded="false">-  <span class="hide-menu">Add Franchise</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl05$Repeater2$ctl01$hdnlevel2" id="Repeater1_Repeater2_5_hdnlevel2_1" value="19">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl05$Repeater2$ctl01$link2" id="Repeater1_Repeater2_5_link2_1" value="List_Franchise.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="List_Franchise.aspx" aria-expanded="false">-  <span class="hide-menu">List Franchise</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <input type="hidden" name="ctl00$Repeater1$ctl06$link1" id="Repeater1_link1_6" value="#">
+                            <input type="hidden" name="ctl00$Repeater1$ctl06$hdnlevel1" id="Repeater1_hdnlevel1_6" value="20">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                    <i class=""></i><span class="hide-menu">Master Setting</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl00$hdnlevel2" id="Repeater1_Repeater2_6_hdnlevel2_0" value="21">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl00$link2" id="Repeater1_Repeater2_6_link2_0" value="Master_State.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_State.aspx" aria-expanded="false">-  <span class="hide-menu">Manage State</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl01$hdnlevel2" id="Repeater1_Repeater2_6_hdnlevel2_1" value="22">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl01$link2" id="Repeater1_Repeater2_6_link2_1" value="Master_City.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_City.aspx" aria-expanded="false">-  <span class="hide-menu">Manage City</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl02$hdnlevel2" id="Repeater1_Repeater2_6_hdnlevel2_2" value="37">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl02$link2" id="Repeater1_Repeater2_6_link2_2" value="Master_Bank.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_Bank.aspx" aria-expanded="false">-  <span class="hide-menu">Manage Bank</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl03$hdnlevel2" id="Repeater1_Repeater2_6_hdnlevel2_3" value="47">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl03$link2" id="Repeater1_Repeater2_6_link2_3" value="Master_Document.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_Document.aspx" aria-expanded="false">-  <span class="hide-menu">Document</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl04$hdnlevel2" id="Repeater1_Repeater2_6_hdnlevel2_4" value="53">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl04$link2" id="Repeater1_Repeater2_6_link2_4" value="Master_Package.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_Package.aspx" aria-expanded="false">-  <span class="hide-menu">Package</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl05$hdnlevel2" id="Repeater1_Repeater2_6_hdnlevel2_5" value="54">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl06$Repeater2$ctl05$link2" id="Repeater1_Repeater2_6_link2_5" value="Add_NewPackage.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Add_NewPackage.aspx" aria-expanded="false">-  <span class="hide-menu">Add Package</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <input type="hidden" name="ctl00$Repeater1$ctl07$link1" id="Repeater1_link1_7" value="#">
+                            <input type="hidden" name="ctl00$Repeater1$ctl07$hdnlevel1" id="Repeater1_hdnlevel1_7" value="27">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                    <i class=""></i><span class="hide-menu">Ecommerce Panel</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl07$Repeater2$ctl00$hdnlevel2" id="Repeater1_Repeater2_7_hdnlevel2_0" value="28">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl07$Repeater2$ctl00$link2" id="Repeater1_Repeater2_7_link2_0" value="Master_Category.aspx?Type=Ecommerce">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_Category.aspx?Type=Ecommerce" aria-expanded="false">-  <span class="hide-menu">Ecommerce Category</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl07$Repeater2$ctl01$hdnlevel2" id="Repeater1_Repeater2_7_hdnlevel2_1" value="29">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl07$Repeater2$ctl01$link2" id="Repeater1_Repeater2_7_link2_1" value="Master_SubCategory.aspx?Type=Ecommerce">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_SubCategory.aspx?Type=Ecommerce" aria-expanded="false">-  <span class="hide-menu">Ecommerce Sub-Category</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl07$Repeater2$ctl02$hdnlevel2" id="Repeater1_Repeater2_7_hdnlevel2_2" value="30">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl07$Repeater2$ctl02$link2" id="Repeater1_Repeater2_7_link2_2" value="Manage_Product.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Manage_Product.aspx" aria-expanded="false">-  <span class="hide-menu">Manage Product</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl07$Repeater2$ctl03$hdnlevel2" id="Repeater1_Repeater2_7_hdnlevel2_3" value="31">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl07$Repeater2$ctl03$link2" id="Repeater1_Repeater2_7_link2_3" value="List_Product.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="List_Product.aspx" aria-expanded="false">-  <span class="hide-menu">List Product</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl07$Repeater2$ctl04$hdnlevel2" id="Repeater1_Repeater2_7_hdnlevel2_4" value="36">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl07$Repeater2$ctl04$link2" id="Repeater1_Repeater2_7_link2_4" value="ImportProduct_Excel.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="ImportProduct_Excel.aspx" aria-expanded="false">-  <span class="hide-menu">Product By Excel</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <input type="hidden" name="ctl00$Repeater1$ctl08$link1" id="Repeater1_link1_8" value="#">
+                            <input type="hidden" name="ctl00$Repeater1$ctl08$hdnlevel1" id="Repeater1_hdnlevel1_8" value="40">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                    <i class=""></i><span class="hide-menu">Website Setting</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl08$Repeater2$ctl00$hdnlevel2" id="Repeater1_Repeater2_8_hdnlevel2_0" value="41">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl08$Repeater2$ctl00$link2" id="Repeater1_Repeater2_8_link2_0" value="Manage_WebColor.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Manage_WebColor.aspx" aria-expanded="false">-  <span class="hide-menu">Manage Color</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <input type="hidden" name="ctl00$Repeater1$ctl09$link1" id="Repeater1_link1_9" value="#">
+                            <input type="hidden" name="ctl00$Repeater1$ctl09$hdnlevel1" id="Repeater1_hdnlevel1_9" value="50">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                                    <i class=""></i><span class="hide-menu">Sales Executive</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse first-level">
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl09$Repeater2$ctl00$hdnlevel2" id="Repeater1_Repeater2_9_hdnlevel2_0" value="51">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl09$Repeater2$ctl00$link2" id="Repeater1_Repeater2_9_link2_0" value="Master_SalesPerson.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="Master_SalesPerson.aspx" aria-expanded="false">-  <span class="hide-menu">Add Sales Person</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                    <input type="hidden" name="ctl00$Repeater1$ctl09$Repeater2$ctl01$hdnlevel2" id="Repeater1_Repeater2_9_hdnlevel2_1" value="52">
+                                    <input type="hidden" name="ctl00$Repeater1$ctl09$Repeater2$ctl01$link2" id="Repeater1_Repeater2_9_link2_1" value="List_SalesPerson.aspx">
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link" href="List_SalesPerson.aspx" aria-expanded="false">-  <span class="hide-menu">List Sales Person</span>  </a>
+                                        <ul aria-expanded="false" class="collapse second-level">
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!-- End Sidebar navigation -->
+                </div>
+                <!-- End Sidebar scroll-->
+            </aside>
+            <!-- ============================================================== -->
+            <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Page wrapper  -->
+            <!-- ============================================================== -->
+            <div class="page-wrapper">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="page-breadcrumb">
+                    <div class="row">
+                        <div class="col-5 align-self-center">
+                            <h4 class="page-title" id="pagename" runat="server">Dashboard</h4>
+                        </div>
+                        <div class="col-7 align-self-center">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#">Home</a> </li>
+                                        <li class="breadcrumb-item active" aria-current="page" runat="server" id="pagename1">Dashboard</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="container-fluid">
+                    <!-- ============================================================== -->
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <div class="loaderbox">
+                        <img src="../Images/loader.gif" style="width: 150px; height: 150px;" />
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Page wrapper  -->
+                <!-- ============================================================== -->
+                <footer class="footer text-center"></footer>
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <!-- apps -->
+        <script src="assets/js/app.min.js"></script>
+        <script src="assets/js/app.init.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="assets/js/perfect-scrollbar.jquery.min.js"></script>
+        <script src="assets/js/sparkline.js"></script>
+        <!--Wave Effects -->
+        <script src="assets/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="assets/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="assets/js/custom.min.js"></script>
+        <!--This page JavaScript -->
+
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+        <script>
+            function Datatablegv() {
+                $('.table').prepend($("<thead></thead>").append($(".table").find("tr:first"))).DataTable({
+                    "responsive": true,
+                    "dom": 'Bfrtip',
+                    "buttons": ['copy', 'excel', 'csv', 'pdf', 'pageLength'],
+                    "pageLength": 10,
+                    "aLengthMenu": [[10, 25, 50, 100, 200, -1],
+                    [10, 25, 50, 100, 200, "All"]
+                    ],
+                });
+            }
+            Datatablegv();
+        </script>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,277 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MerchantMaster.master.cs" Inherits="HelponAdminNew.Merchant.MerchantMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <title>Helpon</title>
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../jquery_Package/sweetalert.min.js"></script>
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css" rel="stylesheet" />
+
+    <style>
+        .loaderbox {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.5);
+        }
+    </style>
+    <script>
+        function Startloader() {
+            $(".loaderbox").css("display", "flex");
+        }
+        function Stoploader() {
+            $(".loaderbox").css("display", "none");
+        }
+    </script>
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+
+        function isDecimalNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode != 46 && charCode > 31
+                && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+
+        function isDecimalNumberNegKey(evt) {
+
+        }
+
+        function trimNumber(obj) {
+            var s = obj.value;
+            while (s.substr(0, 1) == '0' && s.length > 1) { s = s.substr(1, 9999); }
+            obj.value = s;
+        }
+        function getInternetExplorerVersion()
+        // Returns the version of Windows Internet Explorer or a -1
+        // (indicating the use of another browser).
+        {
+            var rv = -1; // Return value assumes failure.
+            if (navigator.appName == 'Microsoft Internet Explorer') {
+                var ua = navigator.userAgent;
+                var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+                if (re.exec(ua) != null)
+                    rv = parseFloat(RegExp.$1);
+            }
+            return rv;
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div class="main-wrapper">
+
+            <div class="header">
+                <div class="header-left">
+                    <a href="Dashboard.aspx" class="logo logo-small">
+                        <img src="assets/img/logo-icon.png" alt="Logo" width="30" height="30">
+                    </a>
+                </div>
+                <a href="javascript:void(0);" id="toggle_btn">
+                    <i class="fas fa-align-left"></i>
+                </a>
+                <a class="mobile_btn" id="mobile_btn" href="javascript:void(0);">
+                    <i class="fas fa-align-left"></i>
+                </a>
+                <ul class="nav user-menu">
+
+                    <li class="nav-item dropdown noti-dropdown">
+                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                            <i class="far fa-bell"></i><span class="badge badge-pill"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right notifications">
+                            <div class="topnav-dropdown-header">
+                                <span class="notification-title">Notifications</span>
+                                <a href="javascript:void(0)" class="clear-noti">Clear All </a>
+                            </div>
+                            <div class="noti-content">
+                                <ul class="notification-list">
+                                    <asp:Repeater ID="rpNotification" runat="server">
+                                        <ItemTemplate>
+                                            <li class="notification-message">
+                                                <a href='View_OrderDetail.aspx?OrderID=<%# Eval("ID") %>'>
+                                                    <div class="media">
+                                                        <span class="avatar avatar-sm">
+                                                            <img class="avatar-img rounded-circle" alt="" src="assets/img/provider/provider-01.jpg">
+                                                        </span>
+                                                        <div class="media-body">
+                                                            <p class="noti-details">
+                                                                <span class="noti-title"><%# Eval("Name") %></span>
+                                                                <br />
+                                                                <%# Eval("NetAmount") %>
+                                                                <br />
+                                                                <%# Eval("PaymentMode") %>
+                                                            </p>
+                                                            <p class="noti-time">
+                                                                <span class="notification-time"><%# Eval("Date") %></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+
+
+                                </ul>
+                            </div>
+                            <div class="topnav-dropdown-footer">
+                                <a href="javascript:void(0)">View all Notifications</a>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <%--  <li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-bs-toggle="dropdown">
+                            <span class="user-img">
+                                <img class="rounded-circle" src="assets/img/user.jpg" width="40" alt="Admin">
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="Manage_MyProfile.aspx">Profile</a>
+                            <a class="dropdown-item" href="login.aspx?logout=logout">Logout</a>
+                        </div>
+                    </li>--%>
+                </ul>
+            </div>
+
+
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-logo">
+                    <a href="Dashboard.aspx">
+                        <img src="assets/img/logo-icon.png" class="img-fluid" alt="">
+                    </a>
+                </div>
+                <div class="sidebar-inner slimscroll">
+                    <div id="sidebar-menu" class="sidebar-menu">
+                        <ul>
+                            <li class="active">
+                                <a href="Dashboard.aspx"><i class="fas fa-columns"></i><span>Dashboard</span></a>
+                            </li>
+                            <li>
+                                <a href="Master_Coupon.aspx"><i class="fas fa-book"></i><span>Coupon</span></a>
+                            </li>
+                            <li>
+                                <a href="View_Review.aspx"><i class="fas fa-book-open"></i><span>View Review</span></a>
+                            </li>
+
+
+                            <li class="submenu">
+                                <a href="#"><i class="fas fa-user"></i><span>Profile</span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="Manage_MyProfile.aspx">My Profile</a></li>
+                                    <li><a href="Manage_Gallery.aspx">My Gallery</a></li>
+                                    <li><a href="Manage_Slider.aspx">My Slider</a></li>
+                                    <li><a href="Manage_Video.aspx">My Video</a></li>
+                                    <li><a href="Manage_BankDetail.aspx">Manage Bank Detail</a></li>
+                                    <li><a href="Manage_KYC.aspx">Manage KYC</a></li>
+                                    <li><a href="ManageChangepassword.aspx">Change Password</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="#"><i class="fas fa-cart-plus"></i><span>Ecommerce</span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="Buy_Product.aspx">Exist Product</a></li>
+                                    <li><a href="Manage_Product.aspx">Add Product</a></li>
+                                    <li><a href="List_Product.aspx">List Product</a></li>
+                                    <li><a href="Manage_Stock.aspx">Manage Stock</a></li>
+                                    <li><a href="Manage_Order.aspx">Order</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="#"><i class="fas fa-book"></i><span>Report</span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="List_Appointment.aspx">Appointment List</a></li>
+                                    <li><a href="List_EnquiryNow.aspx">EnquiryNowList</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="login.aspx?logout=logout"><i class="fas fa-sign-out-alt"></i><span>Log out</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+                    <div class="page-header">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3 class="page-title">Welcome
+                                    <asp:Label ID="lblMerchantName" runat="server"></asp:Label></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <div class="loaderbox">
+                        <img src="../Images/loader.gif" style="width: 150px; height: 150px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="assets/js/admin.js"></script>
+        <!--This page JavaScript -->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+
+        <script>
+            function Datatablegv() {
+                $('.table').prepend($("<thead></thead>").append($(".table").find("tr:first"))).DataTable({
+                    "responsive": true,
+                    "dom": 'Bfrtip',
+                    "buttons": ['copy', 'excel', 'csv', 'pdf', 'print', 'pageLength'],
+                    "pageLength": 10,
+                    "aLengthMenu": [[10, 25, 50, 100, 200, -1],
+                    [10, 25, 50, 100, 200, "All"]
+                    ],
+                });
+            }
+            Datatablegv();
+        </script>
+    </form>
+</body>
+</html>

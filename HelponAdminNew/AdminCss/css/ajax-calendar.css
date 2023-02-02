@@ -1,0 +1,127 @@
+.ajax__calendar{
+   
+  }   
+.ajax__calendar_container{
+    padding:0px!important;
+    border: 1px solid #ddd!important; 
+    width: 225px!important; 
+    -moz-box-shadow:0px 5px 20px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow:0px 5px 20px rgba(0, 0, 0, 0.1);
+	box-shadow:0px 5px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ajax__calendar_header {
+    height: 25px!important;
+    width: 100%;
+    background: #ccc;
+}
+.ajax__calendar_prev {
+    background-position: 50% 98%!important;
+ }
+ .ajax__calendar_next 
+ {
+      background-position: 50% 98%!important;
+ }
+ .ajax__calendar_title {
+    padding-top: 3px!important;
+ }
+
+.ajax__calendar_dayname {
+    height: inherit!important;
+width: inherit!important;
+text-align:center!important;
+padding:inherit!important;
+border-bottom: 0px!important;
+  }
+    
+.ajax__calendar_body {
+    /*height: 220px!important;*/
+     height: 139px!important;
+    width: 100%!important;
+}
+.ajax__calendar_days, .ajax__calendar_months, .ajax__calendar_years {
+    top: 0px;
+    left: 0px;
+    /* height: 212px!important;*/
+    width: 100%!important;
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    
+}
+  
+  .ajax__calendar_days, .ajax__calendar_months, .ajax__calendar_years {
+     height: 139px!important;background: #fff;  
+    }
+  
+  
+  
+ .ajax__calendar_footer 
+ {
+   height: inherit!important;  
+     } 
+ .ajax__calendar_today {
+    cursor: pointer;
+    padding: 5px!important; background:#ccc;
+} 
+  
+   
+   
+   /* table */
+    .ajax__calendar table {width: 100%;}
+    
+    .ajax__calendar table td{
+    border: 1px solid #ddd!important;
+    padding:0px!important;
+   width: 14.28% !important;height: 19px !important;
+   line-height: 16px;
+    }
+    
+     .ajax__calendar table td div{
+     display:table!important; margin:auto!important
+        
+    }
+ 
+.ajax__calendar table tr:nth-last-child(1) td:first-child {
+    
+    padding:0px!important;
+    width: 14.28% !important;height: 19px !important; 
+}
+
+
+.ajax__calendar table tr:nth-last-child(2) td:first-child {
+    
+    padding:0px!important;
+    width: 14.28% !important;height: 19px !important;
+}
+
+
+
+.ajax__calendar table tr td:nth-child(1){
+    padding:0px!important;
+     width: 14.28% !important
+ }
+ .ajax__calendar table tr td:nth-child(2){
+    padding:0px!important;
+     width: 14.28% !important
+ }
+ .ajax__calendar table tr td:nth-child(3){
+    padding:0px!important;
+     width: 14.28% !important
+ }
+ .ajax__calendar table tr td:nth-child(4){
+    padding:0px!important;
+     width: 14.28% !important
+ }
+ .ajax__calendar table tr td:nth-child(5){
+    padding:0px!important;
+     width: 14.28% !important
+ }
+ .ajax__calendar table tr td:nth-child(6){
+    padding:0px!important;
+     width: 14.28% !important
+ }
+ .ajax__calendar table tr td:nth-child(7){
+    padding:0px!important;
+     width: 14.28% !important
+ }

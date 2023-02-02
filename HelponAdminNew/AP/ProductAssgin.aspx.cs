@@ -1,0 +1,88 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace HelponAdminNew.AP
+{
+    public partial class ProductAssgin : System.Web.UI.Page
+    {
+        Cls_Connection cls = new Cls_Connection();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["Id"].ToString() != null)
+                {
+                    var catId = cls.ExecuteIntScalar("select Isnull(Max(ID),0)+1 from tblManage_Default where Id='" + Request.QueryString["Id"].ToString() + "'");
+                    var subcatId = cls.ExecuteIntScalar("select Isnull(Max(ID),0)+1 from tblManage_Default where Id='" + Request.QueryString["Id"].ToString() + "'");
+                    FillGv(catId, subcatId);
+                }
+
+
+            }
+        }
+
+
+        private void FillGv(int catId, int subcatId)
+        {
+            DataTable dt = cls.selectDataTable("Exec ProcMaster_Product 'GetAll',0,'" + catId + "','" + subcatId + "'");
+            GvData.DataSource = dt;
+            GvData.DataBind();
+
+        }
+        protected void btnUpdateAll_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                int chkv = 0;
+                for (int i = 0; i < GvData.Rows.Count; i++)
+                {
+
+                    CheckBox chk = (CheckBox)GvData.Rows[i].FindControl("chkrow");
+                    HiddenField id = (HiddenField)GvData.Rows[i].FindControl("hdnid");
+                    TextBox txtMrp = (TextBox)GvData.Rows[i].FindControl("txtMrp");
+                    TextBox txtPrice = (TextBox)GvData.Rows[i].FindControl("txtPrice");
+                    TextBox txtstock = (TextBox)GvData.Rows[i].FindControl("txtstock");
+
+                    if (chk.Checked == true)
+                    {
+                        //cls.ExecuteQuery("Delete tblManage_MerchantProduct where ID='" + id.Value + "'");
+                       // cls.ExecuteQuery("Update tblManage_MerchantProduct SET Mrp='" + txtMrp.Text + "',Price='" + txtPrice.Text + "' where ID='" + id.Value + "'");
+                        //cls.ExecuteQuery("Exec ProcManage_Stock 'insert','" + id.Value + "','" + txtstock.Text + "','" + dtMerchant.Rows[0]["MID"] + "','Merchant'");
+                        chkv++;
+                    }
+
+                }
+                if (chkv == 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Key", "alert('Please Select Atleast One CheckBox');Stoploader();", true);
+                }
+                else
+                {
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Successfully Update');Stoploader();", true);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + ex.Message.Replace("'", "") + "');Stoploader();", true);
+            }
+        }
+        protected void GvData_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        protected void GvData_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
+    }
+}

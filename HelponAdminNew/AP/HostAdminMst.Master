@@ -1,0 +1,387 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="HostAdminMst.Master.cs" Inherits="HostAdmin_HostAdminMst" %>
+
+<%@ Register Src="~/AP/Menu.ascx" TagPrefix="uc" TagName="Menu" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="#">
+    <meta name="keywords" content="">
+    <meta name="author" content="#">
+    <!-- Favicon icon -->
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+
+
+    <!-- themify-icons line icon -->
+    <link href="../AdminCss/themify-icons/themify-icons.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="../AdminCss/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- ico font -->
+    <link href="../AdminCss/icofont/css/icofont.css" rel="stylesheet" />
+    <!-- feather Awesome -->
+    <link href="../AdminCss/feather/css/feather.css" rel="stylesheet" />
+    <!-- Style.css -->
+
+
+    <!-- Required Fremwork -->
+    <link href="../AdminCss/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- feather Awesome -->
+    <link href="../AdminCss/feather/css/feather.css" rel="stylesheet" />
+    <!-- Style.css -->
+    <link href="../AdminCss/css/style.css" rel="stylesheet" />
+    <link href="../AdminCss/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+
+    <link href="../AdminCss/css/style.css" rel="stylesheet" />
+    <link href="../AdminCss/css/ajax-calendar.css" rel="stylesheet" />
+
+    <link href="../AdminCss/notification/notification.css" rel="stylesheet" />
+    <link href="../AdminCss/animate.css/css/animate.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+
+        function isDecimalNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode != 46 && charCode > 31
+              && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+
+        function isDecimalNumberNegKey(evt) {
+
+        }
+
+        function trimNumber(obj) {
+            var s = obj.value;
+            while (s.substr(0, 1) == '0' && s.length > 1) { s = s.substr(1, 9999); }
+            obj.value = s;
+        }
+        function getInternetExplorerVersion()
+            // Returns the version of Windows Internet Explorer or a -1
+            // (indicating the use of another browser).
+        {
+            var rv = -1; // Return value assumes failure.
+            if (navigator.appName == 'Microsoft Internet Explorer') {
+                var ua = navigator.userAgent;
+                var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+                if (re.exec(ua) != null)
+                    rv = parseFloat(RegExp.$1);
+            }
+            return rv;
+        }
+    </script>
+    <script type="text/javascript">
+        function ClientSideClick(myButton) {
+
+            // Client side validation
+            if (typeof (Page_ClientValidate) == 'function') {
+                if (Page_ClientValidate() == false)
+                { return false; }
+            }
+
+            //make sure the button is not of type "submit" but "button"
+            if (myButton.getAttribute('type') == 'button') {
+                // disable the button
+
+                myButton.disabled = true;
+
+                myButton.value = "Please Wait...";
+            }
+            return true;
+        }
+
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+
+</head>
+<body>
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <form id="form1" runat="server" class="j-pro" autocomplete="off">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+
+
+
+
+
+        <div id="pcoded" class="pcoded">
+            <div class="pcoded-overlay-box"></div>
+            <div class="pcoded-container navbar-wrapper">
+
+                <nav class="navbar header-navbar pcoded-header">
+                    <div class="navbar-wrapper">
+
+                        <div class="navbar-logo" style="text-transform: capitalize!important; border-right: 1px solid #283038 !important;">
+                            <a class="mobile-menu" id="mobile-collapse" href="#!">
+                                <i class="feather icon-menu"></i>
+                            </a>
+                            <a href="HostAdminHome.aspx">
+                                <h2 style="font-size: 20px !important; font-weight: bold;"><span style="color: #01a9ac"><%= Session["Logo1"] %>&nbsp; </span><span style="color: white"><%= Session["Logo2"] %></span></h2>
+                                <%-- <img class="img-fluid" src="../files/assets/images/logo.png" alt="Theme-Logo" />--%>
+                            </a>
+                            <a class="mobile-options">
+                                <i class="feather icon-more-horizontal"></i>
+                            </a>
+                        </div>
+
+                        <div class="navbar-container container-fluid">
+                            <ul class="nav-left">
+
+                                <li>
+                                    <a href="#!" onclick="javascript:toggleFullScreen()">
+                                        <i class="feather icon-maximize full-screen"></i>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav-right">
+
+                                <li class="user-profile header-notification">
+                                    <div class="dropdown-primary dropdown">
+                                        <div class="dropdown-toggle" data-toggle="dropdown">
+                                            <img src='<%= Session["ProfileImg"] %>' class="img-radius" alt="User-Profile-Image" />
+                                            <span><%= Session["HostUserName"] %> </span>
+                                            <i class="feather icon-chevron-down"></i>
+                                        </div>
+                                        <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                            <li>
+                                                <a href="UserProfile.aspx">
+                                                    <i class="feather icon-user"></i>Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="ChangePassword.aspx">
+                                                    <i class="feather icon-unlock"></i>Change Password
+                                                </a>
+                                            </li>
+                                           <%-- <li>
+                                                <a href="Logout.aspx">
+                                                    <i class="feather icon-lock"></i>Lock Screen
+                                                </a>
+                                            </li>--%>
+                                            <li>
+                                                <a href="Logout.aspx">
+                                                    <i class="feather icon-log-out"></i>Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+
+                <!-- Sidebar inner chat end-->
+                <div class="pcoded-main-container">
+                    <div class="pcoded-wrapper">
+                        <uc:Menu ID="WUCMenu1" runat="server" />
+
+                        <div class="pcoded-content">
+                            <div class="pcoded-inner-content">
+                                <div class="main-body">
+                                    <div class="page-wrapper">
+                                        <%-- <ul class="notifications">
+                                            <button class="btn btn-danger waves-effect" data-type="danger" data-from="top" data-align="right">View Warning</button>
+                                        </ul>--%>
+                                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                        </asp:ContentPlaceHolder>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="main-footer">
+                    &copy; 2018  <strong><a href="www.royallucid.com" target="_blank" style="color: #01a9ac !important;">Lucid Technology</a> </strong>All Rights Reserved. +224 621104015 | +91 9718380058 | ©2018 |<a href="www.royallucid.com" target="_blank" style="color: #01a9ac !important;"> www.royallucid.com</a>
+
+                </footer>
+           
+            </div>
+        </div>
+
+        <style type="text/css">
+            .main-footer {
+                text-align: center !important;
+                padding: 12px;
+                color: #fff;
+                border-top: 1px solid #404E67;
+                background-color: #404E67 !important;
+            }
+
+            .alert-success {
+                background: #eaf7d9 url("../images/success.png") no-repeat scroll 10px center;
+                color: #28623c;
+                background-color: #dbf2e3;
+                border-color: #cdedd8;
+            }
+
+                .alert-success hr {
+                    border-top-color: #bae6c9;
+                }
+
+                .alert-success .alert-link {
+                    color: #193e26;
+                }
+
+            .alert-info {
+                color: #336573;
+                background-color: #e0f3f8;
+                border-color: #d3eef6;
+            }
+
+                .alert-info hr {
+                    border-top-color: #bee6f2;
+                }
+
+                .alert-info .alert-link {
+                    color: #234650;
+                }
+
+            .alert-warning {
+                background: #ffd1d1 url("../images/warning.png") no-repeat scroll 10px center;
+                background-color: #f2dede;
+                border-color: #ebccd1;
+                color: #a94442;
+                /*color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;*/
+            }
+
+                .alert-warning hr {
+                    border-top-color: #ffe8a1;
+                }
+
+                .alert-warning .alert-link {
+                    color: #533f03;
+                }
+
+            .alert-danger {
+                color: #813838;
+                background-color: #fee2e1;
+                border-color: #fdd6d6;
+            }
+
+                .alert-danger hr {
+                    border-top-color: #fcbebe;
+                }
+
+                .alert-danger .alert-link {
+                    color: #5d2929;
+                }
+
+            br {
+                margin-top: 4px;
+            }
+
+            .right_Text {
+                text-align: right !important;
+                padding-right: 5px !important;
+            }
+
+            .right_Text2 {
+                text-align: right !important;
+                padding-right: 5px !important;
+                float: right !important;
+            }
+        </style>
+
+
+        <%--  <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>--%>
+        <script src="../AdminJs/jquery/js/jquery.min.js"></script>
+        <script src="../AdminJs/jquery-ui/js/jquery-ui.min.js"></script>
+        <script src="../AdminJs/popper.min.js"></script>
+        <script src="../AdminJs/bootstrap/js/bootstrap.min.js"></script>
+
+
+
+        <!-- jquery slimscroll js -->
+        <script src="../AdminJs/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+        <!-- modernizr js -->
+        <script src="../AdminJs/modernizr/js/modernizr.js"></script>
+        <!-- Chart js -->
+        <script src="../AdminJs/chart.js/js/Chart.js"></script>
+        <!-- amchart js -->
+        <script src="../AdminJs/widget/amchart/amcharts.js"></script>
+        <script src="../AdminJs/widget/amchart/serial.js"></script>
+        <script src="../AdminJs/widget/amchart/light.js"></script>
+        <script src="../AdminJs/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="../AdminJs/js/SmoothScroll.js"></script>
+        <script src="../AdminJs/js/pcoded.min.js"></script>
+        <!-- custom js -->
+        <script src="../AdminJs/js/vartical-layout.min.js"></script>
+        <script src="../AdminJs/js/custom-dashboard.js"></script>
+        <script src="../AdminJs/js/script.js"></script>
+        <script src="../AdminCss/notification/notification.js"></script>
+        <script src="../AdminJs/js/bootstrap-growl.min.js"></script>
+
+    </form>
+</body>
+</html>
