@@ -1,19 +1,7 @@
-﻿using Dapper;
-using HelponAdminNew.App_Data;
-using HelponAdminNew.GlobalHelper;
-using iTextSharp.text.pdf.codec;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
-using System.Data.OleDb;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using Spire.Xls;
-using System.Data.SqlClient;
 
 namespace HelponAdminNew.AP
 {

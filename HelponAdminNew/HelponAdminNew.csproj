@@ -44,30 +44,30 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
-      <HintPath>..\..\..\Backup\Bin\AjaxControlToolkit.dll</HintPath>
+      <HintPath>E:\Gopay\Bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="AjaxPro.2">
-      <HintPath>..\..\..\Backup\Bin\AjaxPro.2.dll</HintPath>
+      <HintPath>E:\Gopay\Bin\AjaxPro.2.dll</HintPath>
     </Reference>
     <Reference Include="CKEditor.NET">
-      <HintPath>..\..\..\Backup\Bin\CKEditor.NET.dll</HintPath>
+      <HintPath>E:\Gopay\Bin\CKEditor.NET.dll</HintPath>
     </Reference>
     <Reference Include="Dapper">
-      <HintPath>..\..\..\Backup\Bin\Dapper.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\Helpon Project30\HelponAdminNew\HelponAdminNew\bin\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\Backup\Bin\itextsharp.dll</HintPath>
+      <HintPath>E:\Gopay\Bin\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Backup\Bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <HintPath>E:\Gopay\Bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
-      <HintPath>..\..\..\Backup\Bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <HintPath>E:\Gopay\Bin\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ObjectBuilder">
-      <HintPath>..\..\..\Backup\Bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+      <HintPath>E:\Gopay\Bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -75,15 +75,6 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Backup\Bin\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="QRCoder">
-      <HintPath>..\..\..\Backup\Bin\QRCoder.dll</HintPath>
-    </Reference>
-    <Reference Include="Spire.Pdf">
-      <HintPath>..\..\..\Backup\Bin\Spire.Pdf.dll</HintPath>
-    </Reference>
-    <Reference Include="Spire.XLS">
-      <HintPath>..\..\..\Backup\Bin\Spire.XLS.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -1511,6 +1502,7 @@
     </Compile>
     <Compile Include="AP\ProductAssgin.aspx.cs">
       <DependentUpon>ProductAssgin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AP\ProductAssgin.aspx.designer.cs">
       <DependentUpon>ProductAssgin.aspx</DependentUpon>

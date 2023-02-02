@@ -47,6 +47,7 @@
                     <%--<label>Img (Max width 1024 Px and height 800 Px and Size 300 KB)</label>--%>
                     <div id="dvPreview">
                         <label for="ContentPlaceHolder1_fileGallery" style="width:100px;height:100px;border:1px solid black;display:flex;justify-content:center;align-items:center;">Add Photos</label>
+                    <span style="color: red">Max width 250px and Height 220px and 300-500 KB</span>
                     </div>
                     <asp:FileUpload ID="fileGallery" runat="server" multiple="multiple" CssClass="form-control d-none" />
                 </div>

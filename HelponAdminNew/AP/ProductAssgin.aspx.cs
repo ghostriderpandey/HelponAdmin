@@ -17,9 +17,7 @@ namespace HelponAdminNew.AP
             {
                 if (Request.QueryString["Id"].ToString() != null)
                 {
-                    var catId = cls.ExecuteIntScalar("select Isnull(Max(ID),0)+1 from tblManage_Default where Id='" + Request.QueryString["Id"].ToString() + "'");
-                    var subcatId = cls.ExecuteIntScalar("select Isnull(Max(ID),0)+1 from tblManage_Default where Id='" + Request.QueryString["Id"].ToString() + "'");
-                    FillGv(catId, subcatId);
+                    FillGv();
                 }
 
 
@@ -27,9 +25,9 @@ namespace HelponAdminNew.AP
         }
 
 
-        private void FillGv(int catId, int subcatId)
+        private void FillGv()
         {
-            DataTable dt = cls.selectDataTable("Exec ProcMaster_Product 'GetAll',0,'" + catId + "','" + subcatId + "'");
+            DataTable dt = cls.selectDataTable("Exec ProcMaster_Product 'GetAll'");
             GvData.DataSource = dt;
             GvData.DataBind();
 
@@ -38,7 +36,8 @@ namespace HelponAdminNew.AP
         {
             try
             {
-
+                var catId = cls.ExecuteIntScalar("select Isnull(Max(ID),0)+1 from tblManage_Default where Id=" + Request.QueryString["Id"].ToString() + "");
+                var subcatId = cls.ExecuteIntScalar("select Isnull(Max(ID),0)+1 from tblManage_Default where Id=" + Request.QueryString["Id"].ToString() + "");
                 int chkv = 0;
                 for (int i = 0; i < GvData.Rows.Count; i++)
                 {
@@ -51,8 +50,8 @@ namespace HelponAdminNew.AP
 
                     if (chk.Checked == true)
                     {
-                        //cls.ExecuteQuery("Delete tblManage_MerchantProduct where ID='" + id.Value + "'");
-                       // cls.ExecuteQuery("Update tblManage_MerchantProduct SET Mrp='" + txtMrp.Text + "',Price='" + txtPrice.Text + "' where ID='" + id.Value + "'");
+                        cls.ExecuteQuery("insert into tblMaster_Product(CID,SCID,Name,Mrp,Price,CGST,SGST,IGST,About,AboutHTML, IMG1, IMG2, IMG3, IMG4, IMG5, IsActive, AddDate) select " + catId + ", " + subcatId + ", Name, Mrp, Price, CGST, SGST, IGST, About, AboutHTML, IMG1, IMG2, IMG3, IMG4, IMG5, IsActive, AddDate from tblMaster_Product where ID = '' where ID='" + id.Value + "'");
+                        // cls.ExecuteQuery("Update tblManage_MerchantProduct SET Mrp='" + txtMrp.Text + "',Price='" + txtPrice.Text + "' where ID='" + id.Value + "'");
                         //cls.ExecuteQuery("Exec ProcManage_Stock 'insert','" + id.Value + "','" + txtstock.Text + "','" + dtMerchant.Rows[0]["MID"] + "','Merchant'");
                         chkv++;
                     }
@@ -84,5 +83,9 @@ namespace HelponAdminNew.AP
 
         }
 
+        protected void GvData_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
     }
 }

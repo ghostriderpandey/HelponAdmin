@@ -22,7 +22,7 @@ namespace HelponAdminNew.Merchant
             if (!IsPostBack)
             {
                 cls.BindDropDownList(ddlType, "select ID,Name from tblMaster_CouponType", "Name", "ID");
-                FillData();
+                //FillData();
             }
         }
         private void FillData()
@@ -45,7 +45,7 @@ namespace HelponAdminNew.Merchant
         }
         private void GetData(int id)
         {
-            DataTable dtresult = cls.selectDataTable("ProcMaster_Coupon 'GetbyID','" + id + "'");
+            DataTable dtresult = cls.selectDataTable("ProcMaster_Coupon 'GetbyID',@ID='" + id + "'");
             if (dtresult.Rows.Count > 0)
             {
                 ddlType.SelectedValue = dtresult.Rows[0]["TID"].ToString();

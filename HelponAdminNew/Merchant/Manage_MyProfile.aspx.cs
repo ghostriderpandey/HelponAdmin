@@ -31,7 +31,7 @@ namespace HelponAdminNew.Merchant
                 cls.BindDropDownList(ddlCategory, "Exec ProcMaster_Category 'GetforDDL',0,'Main'", "Name", "ID");
                 repo.BindDropDownList(ddlState, "GetState", 0, "Name", "ID");
                 GetData();
-               
+
             }
         }
 
@@ -183,8 +183,9 @@ namespace HelponAdminNew.Merchant
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "swal('Alert','" + imageUpload.ImgName + "','info')", true);
                         return;
                     }
+                    var oldbgcolor = cls.ExecuteStringScalar("select BgColor tblMaster_Merchant where MID='" + dtMerchant.Rows[0]["MID"] + "' ");
                     cls.ExecuteQuery("Update tblMaster_Merchant SET ProfileImg = '" + imageUpload.ImgName + "' where MID='" + dtMerchant.Rows[0]["MID"] + "'");
-                    if (txtbgColor.Text.Length > 0)
+                    if (oldbgcolor != txtbgColor.Text.Replace("'", "").Trim())
                     {
                         cls.ExecuteQuery("Update tblMaster_Merchant SET BgColor='" + txtbgColor.Text.Replace("'", "").Trim() + "' where MID='" + dtMerchant.Rows[0]["MID"] + "'");
 
@@ -193,7 +194,8 @@ namespace HelponAdminNew.Merchant
                 }
                 else
                 {
-                    if (txtbgColor.Text.Length > 0)
+                    var oldbgcolor = cls.ExecuteStringScalar("select BgColor tblMaster_Merchant where MID='" + dtMerchant.Rows[0]["MID"] + "' ");
+                    if (oldbgcolor != txtbgColor.Text.Replace("'", "").Trim())
                     {
                         cls.ExecuteQuery("Update tblMaster_Merchant SET BgColor='" + txtbgColor.Text.Replace("'", "").Trim() + "' where MID='" + dtMerchant.Rows[0]["MID"] + "'");
                         Response.Redirect("Manage_MyProfile.aspx");

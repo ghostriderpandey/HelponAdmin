@@ -1,17 +1,15 @@
-﻿using System;
-using System.Web;
+﻿using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+using System;
+using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
-using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using System.Data.Common;
-using System.Text;
-using System.Web.UI.WebControls;
+using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.IO;
 using System.Security.Cryptography;
-using System.Configuration;
-using System.Data.OleDb;
-using Spire.Xls;
-using System.Drawing.Imaging;
+using System.Text;
+using System.Web;
+using System.Web.UI.WebControls;
 
 public class Cls_Connection
 {
