@@ -50,7 +50,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Stock">
                             <ItemTemplate>
-                                <asp:Label ID="txtStock" runat="server" CssClass="form-control" Text='<%# Eval("Stock") %>'></asp:Label>
+                                <asp:Label ID="txtStock" runat="server" CssClass="form-control" Text="0"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 

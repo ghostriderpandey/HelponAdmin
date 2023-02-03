@@ -145,10 +145,7 @@
                         <p class="promocode">Promo code: <span class="code">FLAT123456</span></p>
                     </div>
                 </div>
-                <div class="row">
-                    <div runat="server" id="divcoupon">
-                    </div>
-                </div>
+                 
             </div>
         </div>
     </div>

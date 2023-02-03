@@ -5,6 +5,7 @@ using HelponAdminNew.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -49,7 +50,7 @@ namespace HelponAdminNew.Merchant
                 ddlSubCategory.SelectedValue = merchant.SCID.ToString();
                 txtshopname.Text = merchant.Shopname;
                 txtname.Text = merchant.Name;
-
+                txtbgColor.Text =  merchant.BgColor ;
                 txtMobile.Text = merchant.Mobile;
                 txtAlternetMobile.Text = merchant.AlternetMobile;
                 txtTelphone.Text = merchant.TelPhoneNo;
@@ -183,7 +184,7 @@ namespace HelponAdminNew.Merchant
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "swal('Alert','" + imageUpload.ImgName + "','info')", true);
                         return;
                     }
-                    var oldbgcolor = cls.ExecuteStringScalar("select BgColor tblMaster_Merchant where MID='" + dtMerchant.Rows[0]["MID"] + "' ");
+                    var oldbgcolor = cls.ExecuteStringScalar("select BgColor from tblMaster_Merchant where MID='" + dtMerchant.Rows[0]["MID"] + "' ");
                     cls.ExecuteQuery("Update tblMaster_Merchant SET ProfileImg = '" + imageUpload.ImgName + "' where MID='" + dtMerchant.Rows[0]["MID"] + "'");
                     if (oldbgcolor != txtbgColor.Text.Replace("'", "").Trim())
                     {
@@ -194,7 +195,7 @@ namespace HelponAdminNew.Merchant
                 }
                 else
                 {
-                    var oldbgcolor = cls.ExecuteStringScalar("select BgColor tblMaster_Merchant where MID='" + dtMerchant.Rows[0]["MID"] + "' ");
+                    var oldbgcolor = cls.ExecuteStringScalar("select BgColor from tblMaster_Merchant where MID='" + dtMerchant.Rows[0]["MID"] + "' ");
                     if (oldbgcolor != txtbgColor.Text.Replace("'", "").Trim())
                     {
                         cls.ExecuteQuery("Update tblMaster_Merchant SET BgColor='" + txtbgColor.Text.Replace("'", "").Trim() + "' where MID='" + dtMerchant.Rows[0]["MID"] + "'");

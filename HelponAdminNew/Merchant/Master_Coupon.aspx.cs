@@ -22,26 +22,16 @@ namespace HelponAdminNew.Merchant
             if (!IsPostBack)
             {
                 cls.BindDropDownList(ddlType, "select ID,Name from tblMaster_CouponType", "Name", "ID");
-                //FillData();
+                FillData();
             }
         }
         private void FillData()
         {
-            DataTable dtData = cls.selectDataTable("ProcMaster_Coupon 'GetAll',0,'" + dtMerchant.Rows[0]["MID"] + "'");
+            DataTable dtData = cls.selectDataTable("ProcMaster_Coupon 'GetAll',@ID=0,@MID='" + dtMerchant.Rows[0]["MID"] + "'");
             GvData.DataSource = dtData;
             GvData.DataBind();
             var str = string.Empty;
-            for (int s = 0; s < dtData.Rows.Count; s++)
-            {
-                str += "<div class=\"couponBox CopiedCouponCode\" id=\"Coupon\" style=\"background-color:'" + dtData.Rows[s]["BgColor"].ToString() + "'\">";
-                str += "<p class=\"couponValid\">valid <span id=\"spnExpireDate\" style=\"color:'" + dtData.Rows[s]["BgColor"].ToString() + "'\">'" + dtData.Rows[s]["ExpireDate"].ToString() + "'</span></p>";
-                str += "<label style=\"text-align: center; font-family: cursive;\">";
-                str += "<span style=\"font-family: 'circularstd'; text-transform: capitalize; font-size: 30px;\">Rs.</span>           <span style=\"font-size: 3rem;\" style=\"color:'" + dtData.Rows[s]["BgColor"].ToString() + "'\">'" + dtData.Rows[s]["Discount"].ToString() + "'</span>";
-                str += "<span style=\"font-size: 19px;\" style=\"color:'" + dtData.Rows[s]["BgColor"].ToString() + "'\">'" + dtData.Rows[s]["Name"].ToString() + "'</span></label>";
-                str += "<p class=\"promocode\">Promo code: <span class=\"code\" style=\"color:'" + dtData.Rows[s]["BgColor"].ToString() + "'\">'" + dtData.Rows[s]["Code"].ToString() + "'</span></p>";
-                str += "</div>";
-            }
-            divcoupon.InnerHtml = str;
+            
         }
         private void GetData(int id)
         {
@@ -53,6 +43,8 @@ namespace HelponAdminNew.Merchant
                 txtExpireDate.Text = Convert.ToDateTime(dtresult.Rows[0]["ExpireDate"].ToString()).ToString("yyyy-MM-dd");
                 txttitle.Text = dtresult.Rows[0]["Name"].ToString();
                 txtDescription.Text = dtresult.Rows[0]["Description"].ToString();
+                txtBgColor.Text= dtresult.Rows[0]["BgColor"].ToString();
+                txtColor.Text = dtresult.Rows[0]["forColor"].ToString();
                 ViewState["ID"] = id;
                 ViewState["BgColor"] = dtresult.Rows[0]["BgColor"].ToString();
                 ViewState["forColor"] = dtresult.Rows[0]["forColor"].ToString();
@@ -72,13 +64,13 @@ namespace HelponAdminNew.Merchant
                 id = Convert.ToInt32(ViewState["ID"]);
                 str += "Exec ProcMaster_Coupon 'UpdateC',@ID='" + id + "',";
                 if (ViewState["BgColor"].ToString() != txtBgColor.Text.Replace("'", "").Trim())
-                    strBgColor = ViewState["BgColor"].ToString();
-                else
                     strBgColor = txtBgColor.Text.Replace("'", "").Trim();
-                if (ViewState["forColor"].ToString() != txtColor.Text.Replace("'", "").Trim())
-                    strforColor = ViewState["forColor"].ToString();
                 else
+                    strBgColor = ViewState["BgColor"].ToString();
+                if (ViewState["forColor"].ToString() != txtColor.Text.Replace("'", "").Trim())
                     strforColor = txtColor.Text.Replace("'", "").Trim();
+                else
+                    strforColor = ViewState["forColor"].ToString();
             }
             else
             {
