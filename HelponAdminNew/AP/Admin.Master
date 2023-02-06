@@ -13,7 +13,7 @@
     <!-- This page plugin CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" />
-      <!-- themify-icons line icon -->
+    <!-- themify-icons line icon -->
     <link href="../AdminCss/themify-icons/themify-icons.css" rel="stylesheet" />
     <!-- Font Awesome -->
     <link href="../AdminCss/css/font-awesome.min.css" rel="stylesheet" />
@@ -153,7 +153,7 @@
                 <div class="scroll-sidebar">
                     <!-- Sidebar navigation-->
                     <nav class="sidebar-nav">
-                        
+
                         <ul id="sidebarnav" class="in">
                             <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i><span class="hide-menu">
                                 <asp:Label ID="lblName1" runat="server" Text=""></asp:Label></span></li>
@@ -167,7 +167,10 @@
                                 <ul aria-expanded="false" class="collapse first-level">
                                 </ul>
                             </li>
-
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="ManagePackage.aspx" aria-expanded="false">-  <span class="hide-menu">Manage Packages</span>  </a>
+                              
+                            </li>
                             <input type="hidden" name="ctl00$Repeater1$ctl01$link1" id="Repeater1_link1_1" value="#">
                             <input type="hidden" name="ctl00$Repeater1$ctl01$hdnlevel1" id="Repeater1_hdnlevel1_1" value="2">
                             <li class="sidebar-item">

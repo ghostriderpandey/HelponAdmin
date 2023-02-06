@@ -1137,6 +1137,7 @@
     <Content Include="Merchant\List_Product.aspx" />
     <Content Include="Merchant\Login.aspx" />
     <Content Include="Merchant\ManageChangepassword.aspx" />
+    <Content Include="Merchant\ManagePackage.aspx" />
     <Content Include="Merchant\Manage_BankDetail.aspx" />
     <Content Include="Merchant\Manage_Gallery.aspx" />
     <Content Include="Merchant\Manage_KYC.aspx" />
@@ -1662,6 +1663,13 @@
     </Compile>
     <Compile Include="Merchant\ManageChangepassword.aspx.designer.cs">
       <DependentUpon>ManageChangepassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Merchant\ManagePackage.aspx.cs">
+      <DependentUpon>ManagePackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Merchant\ManagePackage.aspx.designer.cs">
+      <DependentUpon>ManagePackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Merchant\Manage_BankDetail.aspx.cs">
       <DependentUpon>Manage_BankDetail.aspx</DependentUpon>

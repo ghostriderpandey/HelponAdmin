@@ -61,27 +61,28 @@
                                 <img src='<%# Eval("IMG1") %>' style="width: 100px;" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Product" HeaderStyle-Width="100px">
+                        <asp:TemplateField HeaderText="Product" HeaderStyle-Width="100px" ItemStyle-Width="120px">
                             <ItemTemplate>
                                 <label><%# Eval("Productname") %></label>
                                 <br />
                                 <label class="label label-primary"><%# Eval("Categoryname") %></label>
+                                <br />
                                 <label class="label label-primary"><%# Eval("SubCategoryName") %></label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="MRP">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtMrp" runat="server" CssClass="form-control" Text='<%# Eval("Mrp") %>'></asp:TextBox>
+                                <asp:TextBox ID="txtMrp" runat="server" Width="100px" CssClass="form-control" Text='<%# Eval("Mrp") %>'></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Price">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control" Text='<%# Eval("Price") %>'></asp:TextBox>
+                                <asp:TextBox ID="txtPrice" runat="server" Width="100px" CssClass="form-control" Text='<%# Eval("Price") %>'></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Stock">
                             <ItemTemplate>
-                                <asp:TextBox ID="txtStock" runat="server" CssClass="form-control" Text='<%# Eval("Stock") %>'></asp:TextBox>
+                                <asp:TextBox ID="txtStock" runat="server" Width="100px" CssClass="form-control" Text='<%# Eval("Stock") %>'></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                        <%-- <asp:TemplateField HeaderText="Stock">

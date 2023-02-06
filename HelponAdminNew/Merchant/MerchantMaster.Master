@@ -106,52 +106,6 @@
                 </a>
                 <ul class="nav user-menu">
 
-                    <li class="nav-item dropdown noti-dropdown">
-                        <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                            <i class="far fa-bell"></i><span class="badge badge-pill"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right notifications">
-                            <div class="topnav-dropdown-header">
-                                <span class="notification-title">Notifications</span>
-                                <a href="javascript:void(0)" class="clear-noti">Clear All </a>
-                            </div>
-                            <div class="noti-content">
-                                <ul class="notification-list">
-                                    <asp:Repeater ID="rpNotification" runat="server">
-                                        <ItemTemplate>
-                                            <li class="notification-message">
-                                                <a href='View_OrderDetail.aspx?OrderID=<%# Eval("ID") %>'>
-                                                    <div class="media">
-                                                        <span class="avatar avatar-sm">
-                                                            <img class="avatar-img rounded-circle" alt="" src="assets/img/provider/provider-01.jpg">
-                                                        </span>
-                                                        <div class="media-body">
-                                                            <p class="noti-details">
-                                                                <span class="noti-title"><%# Eval("Name") %></span>
-                                                                <br />
-                                                                <%# Eval("NetAmount") %>
-                                                                <br />
-                                                                <%# Eval("PaymentMode") %>
-                                                            </p>
-                                                            <p class="noti-time">
-                                                                <span class="notification-time"><%# Eval("Date") %></span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-
-
-                                </ul>
-                            </div>
-                            <div class="topnav-dropdown-footer">
-                                <a href="javascript:void(0)">View all Notifications</a>
-                            </div>
-                        </div>
-                    </li>
-
 
                     <%--  <li class="nav-item dropdown">
                         <a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-bs-toggle="dropdown">
@@ -165,6 +119,177 @@
                         </div>
                     </li>--%>
                 </ul>
+                <script>
+                    $(document).ready(function () {
+
+
+
+
+                        var down = false;
+
+                        $('#bell').click(function (e) {
+
+                            var color = $(this).text();
+                            if (down) {
+
+                                $('#box').css('height', '0px');
+                                $('#box').css('opacity', '0');
+                                down = false;
+                            } else {
+
+                                $('#box').css('height', 'auto');
+                                $('#box').css('opacity', '1');
+                                down = true;
+
+                            }
+
+                        });
+
+                    });
+                </script>
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
+                    * {
+                        padding: 0px;
+                        margin: 0px
+                    }
+
+                    body {
+                        background: #8E24AA;
+                        color: #fff;
+                        font-family: 'Manrope', sans-serif
+                    }
+
+                    nav {
+                        display: flex;
+                        align-items: center;
+                        background: #AB47BC;
+                        height: 60px;
+                        position: relative;
+                        border-bottom: 1px solid #495057
+                    }
+
+                    .icon {
+                        cursor: pointer;
+                        margin-right: 50px;
+                        line-height: 60px
+                    }
+
+                        .icon span {
+                            background: #f00;
+                            padding: 7px;
+                            border-radius: 50%;
+                            color: #fff;
+                            vertical-align: top;
+                            margin-left: -25px
+                        }
+
+                        .icon img {
+                            display: inline-block;
+                            width: 26px;
+                            margin-top: 4px
+                        }
+
+                        .icon:hover {
+                            opacity: .7
+                        }
+
+                    .logo {
+                        flex: 1;
+                        margin-left: 50px;
+                        color: #eee;
+                        font-size: 20px;
+                        font-family: monospace
+                    }
+
+                    .notifications {
+                        width: 300px;
+                        height: 0px;
+                        opacity: 0;
+                        position: absolute;
+                        top: 63px;
+                        right: 62px;
+                        border-radius: 5px 0px 5px 5px;
+                        background-color: #fff;
+                        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+                    }
+
+                        .notifications h2 {
+                            font-size: 14px;
+                            padding: 10px;
+                            border-bottom: 1px solid #eee;
+                            color: #999
+                        }
+
+                            .notifications h2 span {
+                                color: #f00
+                            }
+
+                    .notifications-item {
+                        display: flex;
+                        border-bottom: 1px solid #eee;
+                        padding: 6px 9px;
+                        margin-bottom: 0px;
+                        cursor: pointer
+                    }
+
+                        .notifications-item:hover {
+                            background-color: #eee
+                        }
+
+                        .notifications-item img {
+                            display: block;
+                            width: 50px;
+                            height: 50px;
+                            margin-right: 9px;
+                            border-radius: 50%;
+                            margin-top: 2px
+                        }
+
+                        .notifications-item .text h4 {
+                            color: #777;
+                            font-size: 16px;
+                            margin-top: 3px
+                        }
+
+                        .notifications-item .text p {
+                            color: #aaa;
+                            font-size: 12px;
+                            margin-bottom: 0px !important;
+                        }
+                </style>
+                <nav>
+                    <div class="logo">Help on</div>
+                    <div class="icon" id="bell">
+                        <img src="https://i.imgur.com/AC7dgLA.png" alt="">
+                    </div>
+                    <div class="notifications" id="box">
+                        <h2>Notifications - <span><%=Session["NotifcationCount"] %></span></h2>
+                        <asp:Repeater ID="rpNotification" runat="server">
+                            <ItemTemplate>
+                                <li class="notification-message">
+                                    <a href='View_OrderDetail.aspx?OrderID=<%# Eval("ID") %>'>
+                                        <div class="notifications-item">
+                                            <img class="avatar-img rounded-circle" alt="" src="assets/img/provider/provider-01.jpg">
+                                            <div class="text">
+                                                <h4 class="noti-title"><%# Eval("Name") %></h4>
+                                                <p>
+                                                    <%# Eval("NetAmount") %>
+                                                    <%# Eval("PaymentMode") %>
+                                                </p>
+                                                <h4>
+                                                    <span class="notification-time"><%# Eval("Date") %></span>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+
+                    </div>
+                </nav>
             </div>
 
 
@@ -182,6 +307,10 @@
                             </li>
                             <li>
                                 <a href="Master_Coupon.aspx"><i class="fas fa-book"></i><span>Coupon</span></a>
+                            </li>
+
+                            <li>
+                                <a href="ManagePackage.aspx"><i class="fa fa-shopping-cart"></i><span>Package</span></a>
                             </li>
                             <li>
                                 <a href="View_Review.aspx"><i class="fas fa-book-open"></i><span>View Review</span></a>

@@ -164,7 +164,7 @@
                             <itemtemplate>
                                 <label><%# Eval("Name") %>-<%# Eval("Discount") %></label>
                                 <br />
-                                <label class="alert alert-success text-uppercase"><%# Eval("Code") %></label>
+                                <label class="alert alert-success text-uppercase"><%# Eval("CouponsCode") %></label>
                             </itemtemplate>
                         </asp:TemplateField>
                         <asp:BoundField HeaderText="Description" DataField="Description" SortExpression="Description" />

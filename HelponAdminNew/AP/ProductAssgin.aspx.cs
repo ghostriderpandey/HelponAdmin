@@ -17,7 +17,9 @@ namespace HelponAdminNew.AP
             {
                 if (Request.QueryString["Id"].ToString() != null)
                 {
-                    FillGv();
+                    var catId = cls.ExecuteIntScalar("select Isnull(Max(ID),0)+1 from tblManage_Default where Id=" + Request.QueryString["Id"].ToString() + "");
+                    var subcatId = cls.ExecuteIntScalar("select Isnull(Max(ID),0)+1 from tblManage_Default where Id=" + Request.QueryString["Id"].ToString() + "");
+                    FillGv(catId, subcatId);
                 }
 
 
@@ -25,9 +27,9 @@ namespace HelponAdminNew.AP
         }
 
 
-        private void FillGv()
+        private void FillGv(int cId, int sId)
         {
-            DataTable dt = cls.selectDataTable("Exec ProcMaster_Product 'GetAll'");
+            DataTable dt = cls.selectDataTable("Exec ProcMaster_Product 'GetAll',@CID=" + cId + ",@SCID=" + sId + "");
             GvData.DataSource = dt;
             GvData.DataBind();
 
@@ -50,7 +52,7 @@ namespace HelponAdminNew.AP
 
                     if (chk.Checked == true)
                     {
-                        cls.ExecuteQuery("insert into tblMaster_Product(CID,SCID,Name,Mrp,Price,CGST,SGST,IGST,About,AboutHTML, IMG1, IMG2, IMG3, IMG4, IMG5, IsActive, AddDate) select " + catId + ", " + subcatId + ", Name, Mrp, Price, CGST, SGST, IGST, About, AboutHTML, IMG1, IMG2, IMG3, IMG4, IMG5, IsActive, AddDate from tblMaster_Product where ID = '' where ID='" + id.Value + "'");
+                        cls.ExecuteQuery("insert into [tblManage_MerchantProduct](MID,CID,SCID,Name,Mrp,Price,CGST,SGST,IGST,About,AboutHTML, IMG1, IMG2, IMG3, IMG4, IMG5, IsActive, AddDate) select " + Request.QueryString["Id"].ToString() + ", " + catId + ", " + subcatId + ", Name, Mrp, Price, CGST, SGST, IGST, About, AboutHTML, IMG1, IMG2, IMG3, IMG4, IMG5, IsActive, getdate() from tblMaster_Product where  ID='" + id.Value + "'");
                         // cls.ExecuteQuery("Update tblManage_MerchantProduct SET Mrp='" + txtMrp.Text + "',Price='" + txtPrice.Text + "' where ID='" + id.Value + "'");
                         //cls.ExecuteQuery("Exec ProcManage_Stock 'insert','" + id.Value + "','" + txtstock.Text + "','" + dtMerchant.Rows[0]["MID"] + "','Merchant'");
                         chkv++;

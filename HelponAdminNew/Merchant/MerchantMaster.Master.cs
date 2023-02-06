@@ -23,6 +23,8 @@ namespace HelponAdminNew.Merchant
                 DataTable dtMerchant = (DataTable)Session["MerchantSession"];
                 lblMerchantName.Text = dtMerchant.Rows[0]["Name"].ToString();
                 DataTable dt = cls.selectDataTable("select a.ID,Name,PaymentMode,(select Sum(NetAmount) from tblManage_OrderDetail where OrderID=a.ID) as NetAmount,convert(varchar,a.AddDate) as Date from tblManage_Order a inner join tblMaster_Customer c on a.CustomerID=c.ID where MID='" + dtMerchant.Rows[0]["MID"] + "' and (CONVERT(date,a.AddDate)=CONVERT(date,getdate()))");
+                var strcount = cls.ExecuteStringScalar("select count(*) from tblManage_Order a inner join tblMaster_Customer c on a.CustomerID=c.ID where MID='" + dtMerchant.Rows[0]["MID"] + "' and (CONVERT(date,a.AddDate)=CONVERT(date,getdate()))");
+                Session["NotifcationCount"] = strcount;
                 rpNotification.DataSource = dt;
                 rpNotification.DataBind();
             }
