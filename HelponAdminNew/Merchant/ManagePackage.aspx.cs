@@ -28,6 +28,8 @@ namespace HelponAdminNew.Merchant
             DataTable dtData = cls.selectDataTable("ProcManage_PackageDetail 'GetAll'");
             GvData.DataSource = dtData;
             GvData.DataBind();
+            rdt.DataSource = dtData;
+            rdt.DataBind();
         }
 
         protected void GvData_RowCommand(object sender, GridViewCommandEventArgs e)
