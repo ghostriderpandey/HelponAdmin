@@ -51,6 +51,11 @@ namespace HelponAdminNew.AP
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + dt.Rows[0]["Message"] + "');", true);
                 }
             }
+            if (e.CommandName == "IsEdit")
+            {
+                string vendid = Convert.ToString(e.CommandArgument.ToString());
+                Response.Redirect("Manage_EditKYC.aspx?Id=" + vendid);
+            }
         }
     }
 }

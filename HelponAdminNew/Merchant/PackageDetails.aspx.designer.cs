@@ -7,200 +7,227 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HelponAdminNew.Franchise
+namespace HelponAdminNew.Merchant
 {
 
 
-    public partial class Manage_Merchant
+    public partial class PackageDetails
     {
 
         /// <summary>
-        /// ddlCategory control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ddlSubCategory control.
+        /// lblpcknme control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubCategory;
+        protected global::System.Web.UI.WebControls.Label lblpcknme;
 
         /// <summary>
-        /// txtshopname control.
+        /// lblamt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtshopname;
+        protected global::System.Web.UI.WebControls.Label lblamt;
 
         /// <summary>
-        /// txtname control.
+        /// lblbuinsesnme control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtname;
+        protected global::System.Web.UI.WebControls.Label lblbuinsesnme;
 
         /// <summary>
-        /// txtMobile control.
+        /// lblcontactprson control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMobile;
+        protected global::System.Web.UI.WebControls.Label lblcontactprson;
 
         /// <summary>
-        /// txtAlternetMobile control.
+        /// lbladress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAlternetMobile;
+        protected global::System.Web.UI.WebControls.Label lbladress;
 
         /// <summary>
-        /// txtTelphone control.
+        /// lblcontno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelphone;
+        protected global::System.Web.UI.WebControls.Label lblcontno;
 
         /// <summary>
-        /// txtWhatsappnumber control.
+        /// lblemail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWhatsappnumber;
+        protected global::System.Web.UI.WebControls.Label lblemail;
 
         /// <summary>
-        /// txtEmail control.
+        /// lblaboutus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.Label lblaboutus;
 
         /// <summary>
-        /// txtAboutus control.
+        /// lblseo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAboutus;
+        protected global::System.Web.UI.WebControls.Label lblseo;
 
         /// <summary>
-        /// txtTwitter control.
+        /// lblgooglemp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTwitter;
+        protected global::System.Web.UI.WebControls.Label lblgooglemp;
 
         /// <summary>
-        /// txtInstagram control.
+        /// lblbankdtl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInstagram;
+        protected global::System.Web.UI.WebControls.Label lblbankdtl;
 
         /// <summary>
-        /// txtfacebook control.
+        /// lblbussinq control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtfacebook;
+        protected global::System.Web.UI.WebControls.Label lblbussinq;
 
         /// <summary>
-        /// txtwebsite control.
+        /// lblwebsite control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtwebsite;
+        protected global::System.Web.UI.WebControls.Label lblwebsite;
 
         /// <summary>
-        /// ddlState control.
+        /// lblprofimg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlState;
+        protected global::System.Web.UI.WebControls.Label lblprofimg;
 
         /// <summary>
-        /// ddlDistrict control.
+        /// lblwebthumb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDistrict;
+        protected global::System.Web.UI.WebControls.Label lblwebthumb;
 
         /// <summary>
-        /// txtCityname control.
+        /// lbladslid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCityname;
+        protected global::System.Web.UI.WebControls.Label lbladslid;
 
         /// <summary>
-        /// txtpincode control.
+        /// lblgalleryimg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpincode;
+        protected global::System.Web.UI.WebControls.Label lblgalleryimg;
 
         /// <summary>
-        /// txtAddress control.
+        /// lblvideoclip control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        protected global::System.Web.UI.WebControls.Label lblvideoclip;
 
         /// <summary>
-        /// txtPassword control.
+        /// lblcoupanfacil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.Label lblcoupanfacil;
 
         /// <summary>
-        /// btnUpdate control.
+        /// lblsellprod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdate;
+        protected global::System.Web.UI.WebControls.Label lblsellprod;
+
+        /// <summary>
+        /// lbltxinvo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltxinvo;
+
+        /// <summary>
+        /// lbldevfact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbldevfact;
+
+        /// <summary>
+        /// lblpassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpassword;
     }
 }

@@ -286,6 +286,7 @@
     <Content Include="AP\ManageCouponImg.aspx" />
     <Content Include="AP\Manage_Ads.aspx" />
     <Content Include="AP\Manage_Default.aspx" />
+    <Content Include="AP\Manage_EditKYC.aspx" />
     <Content Include="AP\Manage_PopularMerchant.aspx" />
     <Content Include="AP\List_MerchantCoupon.aspx" />
     <Content Include="AP\Manage_WebColor.aspx" />
@@ -1148,6 +1149,7 @@
     <Content Include="Merchant\Manage_Stock.aspx" />
     <Content Include="Merchant\Manage_Video.aspx" />
     <Content Include="Merchant\Master_Coupon.aspx" />
+    <Content Include="Merchant\PackageDetails.aspx" />
     <Content Include="Merchant\Signup.aspx" />
     <Content Include="Merchant\View_OrderDetail.aspx" />
     <Content Include="Merchant\View_Review.aspx" />
@@ -1307,6 +1309,13 @@
     </Compile>
     <Compile Include="AP\Manage_Default.aspx.designer.cs">
       <DependentUpon>Manage_Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AP\Manage_EditKYC.aspx.cs">
+      <DependentUpon>Manage_EditKYC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AP\Manage_EditKYC.aspx.designer.cs">
+      <DependentUpon>Manage_EditKYC.aspx</DependentUpon>
     </Compile>
     <Compile Include="AP\Manage_PopularMerchant.aspx.cs">
       <DependentUpon>Manage_PopularMerchant.aspx</DependentUpon>
@@ -1747,6 +1756,13 @@
     </Compile>
     <Compile Include="Merchant\MerchantMaster.Master.designer.cs">
       <DependentUpon>MerchantMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Merchant\PackageDetails.aspx.cs">
+      <DependentUpon>PackageDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Merchant\PackageDetails.aspx.designer.cs">
+      <DependentUpon>PackageDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Merchant\Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>

@@ -26,8 +26,7 @@ namespace HelponAdminNew.Merchant
         private void FillGv()
         {
             DataTable dtData = cls.selectDataTable("ProcManage_PackageDetail 'GetAll'");
-            GvData.DataSource = dtData;
-            GvData.DataBind();
+            
             rdt.DataSource = dtData;
             rdt.DataBind();
         }

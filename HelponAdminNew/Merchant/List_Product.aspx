@@ -34,7 +34,7 @@
             <asp:Button ID="btnUpdateAll" runat="server" CssClass="btn btn-primary" Text="Update" OnClick="btnUpdateAll_Click" OnClientClick="return confirm('Are you sure you want to Update All ?');" />
             <asp:Button ID="btnDelete" runat="server" CssClass="btn btn-danger" Text="Delete" OnClick="btnDelete_Click" OnClientClick="return confirm('Are you sure you want to delete this ?');" />
             <div class="table-responsive m-t-40">
-                <asp:GridView ID="GvData" runat="server" CssClass="table table-bordered table-condensed table-hover table-striped" Width="100%" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false" OnRowCommand="GvData_RowCommand" OnRowDeleting="GvData_RowDeleting" OnRowEditing="GvData_RowEditing">
+                <asp:GridView ID="GvData" runat="server" CssClass="table-bordered" Width="100%" ShowHeaderWhenEmpty="True" AutoGenerateColumns="false" OnRowCommand="GvData_RowCommand" OnRowDeleting="GvData_RowDeleting" OnRowEditing="GvData_RowEditing">
                     <Columns>
                         <asp:TemplateField HeaderText="Sr. No.">
                             <ItemTemplate>
@@ -56,20 +56,6 @@
 
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="#" HeaderStyle-Width="100px">
-                            <ItemTemplate>
-                                <img src='<%# Eval("IMG1") %>' style="width: 100px;" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Product" HeaderStyle-Width="100px" ItemStyle-Width="120px">
-                            <ItemTemplate>
-                                <label><%# Eval("Productname") %></label>
-                                <br />
-                                <label class="label label-primary"><%# Eval("Categoryname") %></label>
-                                <br />
-                                <label class="label label-primary"><%# Eval("SubCategoryName") %></label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="MRP">
                             <ItemTemplate>
                                 <asp:TextBox ID="txtMrp" runat="server" Width="100px" CssClass="form-control" Text='<%# Eval("Mrp") %>'></asp:TextBox>
@@ -85,7 +71,22 @@
                                 <asp:TextBox ID="txtStock" runat="server" Width="100px" CssClass="form-control" Text='<%# Eval("Stock") %>'></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                       <%-- <asp:TemplateField HeaderText="Stock">
+                        <asp:TemplateField HeaderText="#" HeaderStyle-Width="100px">
+                            <ItemTemplate>
+                                <img src='<%# Eval("IMG1") %>' style="width: 100px;" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Product" HeaderStyle-Width="100px" ItemStyle-Width="120px">
+                            <ItemTemplate>
+                                <label><%# Eval("Productname") %></label>
+                                <br />
+                                <label class="label label-primary"><%# Eval("Categoryname") %></label>
+                                <br />
+                                <label class="label label-primary"><%# Eval("SubCategoryName") %></label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <%-- <asp:TemplateField HeaderText="Stock">
                             <ItemTemplate>
                                 <label>Available Stock : <%# Eval("Stock") %></label>
                                 <br />
@@ -99,9 +100,9 @@
                         <asp:BoundField HeaderText="Description" DataField="About" SortExpression="About" />
                         <asp:TemplateField HeaderText="Action">
                             <ItemTemplate>
-                                <a href='Manage_Product.aspx?id=<%# Eval("ID") %>' target="_blank" class="btn btn-primary mb-1">Edit</a>
+                                <a href='Manage_Product.aspx?id=<%# Eval("ID") %>' target="_blank" class="btn btn-primary mb-1"><i class="fa fa-edit"></i></a>
                                 <%--<asp:LinkButton ID="lnkbtnActive" runat="server" CssClass='<%# Eval("IsActive").ToString().ToUpper()=="true".ToUpper()?"btn btn-success":"btn btn-danger" %>' Text='<%# Eval("IsActive").ToString().ToUpper()=="true".ToUpper()?"Active":"In-Active" %>' CommandName="IsActive" CommandArgument='<%# Eval("ID") %>'></asp:LinkButton>--%>
-                                <asp:LinkButton ID="lnkbtnDelete" runat="server" CssClass="btn btn-danger" CommandName="Delete" CommandArgument='<%# Eval("ID") %>' OnClientClick="if (!confirm('Are you sure you want to delete ? ')) return false;" Text="Delete"></asp:LinkButton>
+                                <asp:LinkButton ID="lnkbtnDelete" runat="server" CssClass="btn btn-danger" CommandName="Delete" CommandArgument='<%# Eval("ID") %>' OnClientClick="if (!confirm('Are you sure you want to delete ? ')) return false;"><i class="fa fa-trash" aria-hidden="true"></i></asp:LinkButton>
 
                             </ItemTemplate>
                             <HeaderStyle Width="16px"></HeaderStyle>
@@ -121,7 +122,7 @@
             </div>
         </div>
     </div>
-  
+
     <!-- Modal -->
     <div class="modal fade" id="StockUpdateModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

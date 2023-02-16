@@ -27,11 +27,11 @@ namespace HelponAdminNew.Merchant
         }
         private void FillData()
         {
-            DataTable dtData = cls.selectDataTable("ProcMaster_Coupon 'GetAll',@ID=0,@MID='" + dtMerchant.Rows[0]["MID"] + "'");
+            DataTable dtData = cls.selectDataTable("ProcMaster_Coupon 'GetAll',@ID='" + dtMerchant.Rows[0]["MID"] + "'");
             GvData.DataSource = dtData;
             GvData.DataBind();
             var str = string.Empty;
-            
+
         }
         private void GetData(int id)
         {
@@ -40,10 +40,11 @@ namespace HelponAdminNew.Merchant
             {
                 ddlType.SelectedValue = dtresult.Rows[0]["TID"].ToString();
                 txtDiscount.Text = dtresult.Rows[0]["Discount"].ToString();
-                txtExpireDate.Text = Convert.ToDateTime(dtresult.Rows[0]["ExpireDate"].ToString()).ToString("yyyy-MM-dd");
+                if (dtresult.Rows[0]["ExpireDate"].ToString() != "")
+                    txtExpireDate.Text = Convert.ToDateTime(dtresult.Rows[0]["ExpireDate"].ToString()).ToString("yyyy-MM-dd");
                 txttitle.Text = dtresult.Rows[0]["Name"].ToString();
                 txtDescription.Text = dtresult.Rows[0]["Description"].ToString();
-                txtBgColor.Text= dtresult.Rows[0]["BgColor"].ToString();
+                txtBgColor.Text = dtresult.Rows[0]["BgColor"].ToString();
                 txtColor.Text = dtresult.Rows[0]["forColor"].ToString();
                 ViewState["ID"] = id;
                 ViewState["BgColor"] = dtresult.Rows[0]["BgColor"].ToString();

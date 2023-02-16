@@ -63,7 +63,7 @@ namespace HelponAdminNew.Franchise
                 ddlState_SelectedIndexChanged(null, null);
                 ddlDistrict.SelectedValue = merchant.DistrictID.ToString();
                 ddlDistrict_SelectedIndexChanged(null, null);
-                ddlTehsil.SelectedValue = merchant.TehsilID.ToString();
+                //ddlTehsil.SelectedValue = merchant.TehsilID.ToString();
                 txtCityname.Text = merchant.CityName;
                 txtpincode.Text = merchant.Pincode;
                 txtAddress.Text = merchant.Address;
@@ -110,7 +110,7 @@ namespace HelponAdminNew.Franchise
             param.Add("@Email", txtEmail.Text.Trim());
             param.Add("@StateID", ddlState.SelectedValue);
             param.Add("@DistrictID", ddlDistrict.SelectedValue);
-            param.Add("@TehsilID", ddlTehsil.SelectedValue);
+            param.Add("@TehsilID", "0");
             param.Add("@CityName", txtCityname.Text.Trim());
             param.Add("@Address", txtAddress.Text.Trim());
             param.Add("@Pincode", txtpincode.Text.Trim());

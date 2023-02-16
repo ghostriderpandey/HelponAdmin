@@ -156,10 +156,7 @@
                             <label>District</label>
                             <asp:DropDownList ID="ddlDistrict" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                         </div>
-                        <div class="col-md-6">
-                            <label>Tehsil</label>
-                            <asp:DropDownList ID="ddlTehsil" runat="server" CssClass="form-control"></asp:DropDownList>
-                        </div>
+                        
                         <div class="col-md-6">
                             <label>City Name</label>
                             <asp:TextBox ID="txtCityname" runat="server" CssClass="form-control"></asp:TextBox>

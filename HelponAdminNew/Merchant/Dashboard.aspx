@@ -5,22 +5,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col-xl-3 col-sm-6 col-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="dash-widget-header">
-                        <span class="dash-widget-icon bg-primary">
-                            <i class="far fa-user"></i>
-                        </span>
-                        <div class="dash-widget-info">
-                            <h3>Welcome</h3>
-                            <h6 class="text-muted">Package</h6>
+            <a href="Manage_KYC.aspx">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-primary">
+                                <i class="far fa-user"></i>
+                            </span>
+                            <div class="dash-widget-info">
+                                <h3>Welcome</h3>
+                                <h6 class="text-muted">Package</h6>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
-         <div class="col-xl-3 col-sm-6 col-12">
-            
+        <div class="col-xl-3 col-sm-6 col-12">
+            <a href="Manage_KYC.aspx">
                 <div class="card">
                     <div class="card-body">
                         <div class="dash-widget-header">
@@ -28,13 +30,13 @@
                                 <i class="fas fa-user-shield"></i>
                             </span>
                             <div class="dash-widget-info">
-                                <h3 id="lblKYC" runat="server"> </h3>
+                                <h3 id="lblKYC" runat="server"></h3>
                                 <h6 class="text-muted">KYC</h6>
                             </div>
                         </div>
                     </div>
                 </div>
-            
+            </a>
         </div>
         <div class="col-xl-3 col-sm-6 col-12">
             <a href="List_Appointment.aspx">
@@ -45,7 +47,7 @@
                                 <i class="fas fa-user-shield"></i>
                             </span>
                             <div class="dash-widget-info">
-                                <h3 id="lblTotalAppointment" runat="server"> </h3>
+                                <h3 id="lblTotalAppointment" runat="server"></h3>
                                 <h6 class="text-muted">Appointment</h6>
                             </div>
                         </div>
@@ -87,7 +89,56 @@
                 </div>
             </a>
         </div>
-
+        <div class="col-xl-3 col-sm-6 col-12">
+            <a href="Master_Coupon.aspx">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-primary">
+                                <i class="fas fa-book"></i>
+                            </span>
+                            <div class="dash-widget-info">
+                                <h6 class="text-muted">Coupon</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-12">
+            <a href="Manage_MyProfile.aspx">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-primary">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <div class="dash-widget-info">
+                                
+                                <h6 class="text-muted">My Profile</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-12">
+            <a href="Manage_Product.aspx">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-primary">
+                                <i class="fas fa-cart-plus"></i>
+                            </span>
+                            <div class="dash-widget-info">
+                                
+                                <h6 class="text-muted">Product</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
- 
+
 </asp:Content>

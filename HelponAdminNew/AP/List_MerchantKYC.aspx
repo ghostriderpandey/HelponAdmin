@@ -20,12 +20,12 @@
                 </div>
                 <div class="col-md-3">
                     <label>Status</label>
-                   <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control">
-                       <asp:ListItem Value="">--Select--</asp:ListItem>
-                       <asp:ListItem Value="Pending">Pending</asp:ListItem>
-                       <asp:ListItem Value="Verified">Verified</asp:ListItem>
-                       <asp:ListItem Value="Rejected">Rejected</asp:ListItem>
-                   </asp:DropDownList>
+                    <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control">
+                        <asp:ListItem Value="">--Select--</asp:ListItem>
+                        <asp:ListItem Value="Pending">Pending</asp:ListItem>
+                        <asp:ListItem Value="Verified">Verified</asp:ListItem>
+                        <asp:ListItem Value="Rejected">Rejected</asp:ListItem>
+                    </asp:DropDownList>
                 </div>
 
                 <div class="col-md-3">
@@ -38,7 +38,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <asp:GridView ID="GvData" runat="server" CssClass="table table-bordered table-condensed table-striped" AutoGenerateColumns="false" AllowPaging="false" Width="100%" ShowHeaderWhenEmpty="false" OnRowCommand="GvData_RowCommand">
+                <asp:GridView ID="GvData" runat="server" CssClass="table table-bordered" AutoGenerateColumns="false" AllowPaging="false" Width="100%" ShowHeaderWhenEmpty="false" OnRowCommand="GvData_RowCommand">
                     <Columns>
                         <asp:TemplateField HeaderText="SNo">
                             <ItemTemplate>
@@ -49,6 +49,7 @@
                             <ItemTemplate>
                                 <asp:LinkButton ID="lnkbtnVerify" runat="server" CssClass="btn btn-sm btn-success w-100" Text="Verify" CommandName="IsVerify" CommandArgument='<%# Eval("ID") %>' Visible='<%# Eval("Status").ToString().ToUpper()=="Pending".ToUpper()?true:false %>'></asp:LinkButton>
                                 <asp:LinkButton ID="lnkbtnReject" runat="server" CssClass="btn btn-sm btn-danger mt-2 w-100" Text="Reject" CommandName="IsReject" CommandArgument='<%# Eval("ID") %>' Visible='<%# Eval("Status").ToString().ToUpper()=="Pending".ToUpper()?true:false %>'></asp:LinkButton>
+                                <asp:LinkButton ID="lnkbtnedit" runat="server" CssClass="btn btn-sm btn-danger" CommandName="IsEdit" CommandArgument='<%# Eval("ID") %>'><i class="fa fa-edit"></i></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Remark">
@@ -109,6 +110,7 @@
                     <EmptyDataTemplate>
                         <div class="EmptyDataTemplate">
                             No Record Found !
+                       
                         </div>
                     </EmptyDataTemplate>
                     <RowStyle CssClass="RowStyle" />

@@ -92,7 +92,7 @@
 
         <div class="main-wrapper">
 
-            <div class="header">
+            <div class="header ">
                 <div class="header-left">
                     <a href="Dashboard.aspx" class="logo logo-small">
                         <img src="assets/img/logo-icon.png" alt="Logo" width="30" height="30">
@@ -104,7 +104,7 @@
                 <a class="mobile_btn" id="mobile_btn" href="javascript:void(0);">
                     <i class="fas fa-align-left"></i>
                 </a>
-                <ul class="nav user-menu">
+                <ul class="nav user-menu navbar-fixed-top">
 
 
                     <%--  <li class="nav-item dropdown">
@@ -248,7 +248,8 @@
                             margin-bottom: 0px !important;
                         }
                 </style>
-                <nav>
+                <nav class="navbar navbar-default navbar-fixed-top">
+
                     <div class="logo">Help on</div>
                     <div class="icon" id="bell">
                         <img src="https://i.imgur.com/AC7dgLA.png" alt=""><span><%=Session["NotifcationCount"] %></span>
@@ -374,7 +375,6 @@
         <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
-        <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
 
         <script>
             function Datatablegv() {
